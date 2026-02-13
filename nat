@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Nat ðŸ’•</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffe4ec 0%, #ffc4d6 50%, #ffb3c9 100%);
+            font-family: 'Playfair Display', serif;
+            color: #5a3d4a;
+            overflow-x: hidden;
+        }
+        
+        /* Floating hearts background */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .heart {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.4);
+            animation: float 6s ease-in-out infinite;
+            font-size: 20px;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        
+        /* Photo gallery */
+        .photo-frame {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            box-shadow: 0 0 40px rgba(255, 107, 157, 0.3), 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+            animation: pulse-glow 2s ease-in-out infinite;
+            background: #fff;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 40px rgba(255, 107, 157, 0.3), 0 15px 35px rgba(0,0,0,0.1); }
+            50% { box-shadow: 0 0 60px rgba(255, 107, 157, 0.5), 0 15px 35px rgba(0,0,0,0.1); }
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Second photo */
+        .photo-2 {
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            right: 8%;
+            top: 12%;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 25px rgba(255, 107, 157, 0.2);
+            overflow: hidden;
+            animation: float-photo 4s ease-in-out infinite;
+            background: #fff;
+        }
+        
+        @keyframes float-photo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .photo-2 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #d6336c;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+            margin-bottom: 10px;
+            animation: fade-in 1s ease-out;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #8b4d63;
+            margin-bottom: 40px;
+            animation: fade-in 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Letter section */
+        .letter {
+            background: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(255,240,245,0.85) 100%);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            margin-bottom: 40px;
+            animation: fade-in 1s ease-out 0.5s both;
+            box-shadow: 0 10px 40px rgba(214, 51, 108, 0.15);
+        }
+        
+        .letter h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #d6336c;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .letter p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #6b4555;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .letter .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: #d6336c;
+            margin-top: 20px;
+            text-align: right;
+        }
+        
+        /* Buttons */
+        .buttons {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            animation: fade-in 1s ease-out 0.7s both;
+        }
+        
+        .btn-yes {
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            background: linear-gradient(135deg, #d6336c 0%, #e85a8a 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(214, 51, 108, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(214, 51, 108, 0.5);
+        }
+        
+        .btn-yes:active {
+            transform: scale(0.95);
+        }
+        
+        .btn-no {
+            padding: 20px 40px;
+            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        .btn-no:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Response page - YES */
+        .response {
+            display: none;
+            text-align: center;
+            animation: celebration 1s ease-out;
+        }
+        
+        @keyframes celebration {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .response h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #d6336c;
+            margin-bottom: 20px;
+        }
+        
+        .response p {
+            font-size: 1.5rem;
+            color: #8b4d63;
+        }
+        
+        .hearts-celebration {
+            font-size: 3rem;
+            margin: 20px 0;
+            animation: bounce 0.5s ease infinite alternate;
+        }
+        
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        
+        /* Response page - NO */
+        .response-no {
+            display: none;
+            text-align: center;
+            animation: fade-in 0.5s ease-out;
+        }
+        
+        .response-no h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #d6336c;
+            margin-bottom: 15px;
+        }
+        
+        .response-no p {
+            font-size: 1.2rem;
+            color: #8b4d63;
+            margin-bottom: 30px;
+        }
+        
+        .btn-back {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+            background: #d6336c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(214, 51, 108, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-back:hover {
+            transform: scale(1.05);
+            background: #c2255c;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .title { font-size: 2.5rem; }
+            .subtitle { font-size: 1.1rem; }
+            .photo-frame { width: 200px; height: 200px; }
+            .photo-2 { display: none; }
+            .letter { padding: 25px; }
+            .letter p { font-size: 1rem; }
+            .btn-yes { padding: 15px 40px; font-size: 1.2rem; }
+            .btn-no { padding: 5px 12px; font-size: 0.65rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <div class="hearts-bg" id="heartsBg"></div>
+    
+    <div class="container">
+        <!-- Main content -->
+        <div id="mainContent">
+            <h1 class="title">My Dearest Nat ðŸ’•</h1>
+            <p class="subtitle">Will you be my Valentine?</p>
+            
+            <!-- Your love letter -->
+            <div class="letter">
+                <h2>My Love,</h2>
+                <p>
+                    I just wanted to tell you something that's been sitting in my heart for a while now. 
+                    I love you so much, more than I could ever fully put into words, but I'm going to 
+                    try anyway. From the moment you came into my life, everything started to feel brighter, 
+                    warmer, and more meaningful. You've become such an important part of my world that 
+                    it's hard to remember what life even felt like before you. Loving you feels natural, 
+                    effortless, and right, like my heart always knew it was meant to find yours.
+                </p>
+                <p>
+                    When I think about the future, I don't picture places or things. I picture you. I 
+                    picture us laughing over little inside jokes, supporting each other through every challenge, 
+                    holding hands through all the ups and downs that life brings. I imagine us growing old 
+                    together, sitting side by side, still teasing each other, still smiling the same way we 
+                    do now, only with more memories, more stories, and even deeper love between us. The idea 
+                    of building a life with you, creating traditions, sharing quiet mornings and late night 
+                    talks, means more to me than anything else.
+                </p>
+                <p>
+                    You are my safe place. My best friend. My greatest comfort and my biggest inspiration. 
+                    You make me want to be a better person, not because you ask me to, but because loving 
+                    you makes me want to grow. You've shown me what it means to care deeply, to be patient, 
+                    to be understanding, and to truly cherish someone. The way you smile, the way you think, 
+                    the way you care, all of it means everything to me.
+                </p>
+                <p>
+                    I want you to know that my heart belongs to you, completely and endlessly. Not just for 
+                    now, not just for the easy days, but for every season of life. I choose you today, and 
+                    I will choose you tomorrow, and the day after that, over and over again. No matter what 
+                    life brings, I want to face it with you by my side. I want to celebrate victories with 
+                    you, lean on each other during hard times, and never stop learning and growing together.
+                </p>
+                <p>
+                    You are my everything, not because I need you to complete me, but because life with you 
+                    feels fuller, richer, and more beautiful. Being loved by you is a gift I never take 
+                    for granted. And loving you is the most natural and certain thing I've ever felt.
+                </p>
+                <p>
+                    So here's my promise to you. I will keep loving you with my whole heart. I will keep 
+                    showing up for you. I will keep choosing us. I hope we truly do spend the rest of our 
+                    lives together, building something lasting, something strong, something filled with 
+                    happiness, trust, and endless affection.
+                </p>
+                <p>
+                    Forever and ever, my heart is yours.
+                </p>
+                <div class="signature">With all my love,<br>Your Valentine â¤ï¸</div>
+            </div>
+            
+            <!-- Buttons -->
+            <div class="buttons">
+                <button class="btn-yes" onclick="sayYes()">Yes ðŸ’•</button>
+                <button class="btn-no" onclick="sayNo()">No</button>
+            </div>
+        </div>
+        
+        <!-- Response - YES -->
+        <div class="response" id="responseYes">
+            <div class="hearts-celebration">ðŸ’•ðŸ’–ðŸ’—ðŸ’ðŸ’•</div>
+            <h1>YAY! You made me the happiest person! ðŸ’•</h1>
+            <p>Happy Valentine's Day, my Nat! I love you! â¤ï¸</p>
+            <p style="font-size: 1.3rem; margin-top: 30px; color: #d6336c;">Now talk to me to receive your gifts! ðŸŽâœ¨</p>
+        </div>
+        
+        <!-- Response - NO -->
+        <div class="response-no" id="responseNo">
+            <div style="font-size: 4rem; margin-bottom: 20px;">ðŸ¥º</div>
+            <h1>Wait! Please Don't Say No ðŸ’”</h1>
+            <p>Give me a chance to prove my love to you.<br>Click below to think about it again...</p>
+            <button class="btn-back" onclick="goBack()">Let Me Think ðŸ’­</button>
+        </div>
+    </div>
+    
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('heartsBg');
+            const hearts = ['ðŸ’•', 'ðŸ’—', 'ðŸ’–', 'ðŸ’˜', 'ðŸ’', 'â¤ï¸', 'ðŸ’Œ'];
+            
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+                container.appendChild(heart);
+            }
+        }
+        
+        // Move No button when clicked
+        function moveNoButton() {
+            const btn = document.querySelector('.btn-no');
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            
+            // Random position within the container
+            const maxX = containerRect.width - 150;
+            const maxY = containerRect.height - 100;
+            const newX = Math.random() * maxX - maxX/2;
+            const newY = Math.random() * maxY - maxY/2;
+            
+            btn.style.position = 'fixed';
+            btn.style.left = (50 + newX / containerRect.width * 50) + '%';
+            btn.style.top = (50 + newY / containerRect.height * 50) + '%';
+            btn.style.transform = 'translate(-50%, -50%)';
+        }
+        
+        // Say Yes
+        function sayYes() {
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('responseYes').style.display = 'block';
+            createCelebration();
+        }
+        
+        // Say No - moves the button instead of showing screen
+        function sayNo() {
+            moveNoButton();
+        }
+        
+        // Go back to main
+        function goBack() {
+            document.getElementById('responseNo').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        }
+        
+        // Celebration
+        function createCelebration() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.innerHTML = ['ðŸ’•', 'ðŸ’—', 'ðŸ’–', 'ðŸ’', 'â¤ï¸'][Math.floor(Math.random() * 5)];
+                    confetti.style.position = 'fixed';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-50px';
+                    confetti.style.fontSize = (20 + Math.random() * 30) + 'px';
+                    confetti.style.animation = 'fall 3s linear forwards';
+                    confetti.style.zIndex = '100';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 50);
+            }
+        }
+        
+        // Add fall animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    top: 100vh;
+                    transform: rotate(720deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize
+        createHearts();
+    </script>
+</body>
+</html>
